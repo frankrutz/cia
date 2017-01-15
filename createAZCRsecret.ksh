@@ -1,3 +1,5 @@
+#Take the variables from the description of you azure Aontainer Registry page.
+
 export DOCKER_REGISTRY_SERVER=YOURREGSERVER
 export DOCKER_USER=YOURUSER
 export DOCKER_PASSWORD=YOURPASSWORD
