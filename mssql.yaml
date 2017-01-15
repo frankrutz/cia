@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mssql
+  labels:
+    app: database
+spec:
+  containers:
+    - name: dbserver
+      image: microsoft/mssql-server-linux
+      env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: SA_PASSWORD
+          value: "ABpKJ.mjm1968pups"
+      ports:
+        - containerPort: 1433
