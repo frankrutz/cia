@@ -24,8 +24,8 @@ Highlights will be:
 To prepare for running kubernetes from a Windows 10 bash, we install 
 - Bash
 - Azure CLI
-- kubectl
-- git
+- Kubectl
+- Git
 
 Install instructions for bash on Windows 10:
 http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/
@@ -84,11 +84,6 @@ create a kubernetes secret.
 
 See createAZCRsecret.ksh
 
-
-## Example One-Container pod appserver
-
-kubectl create -f uno.yaml
-
 ## Example Two-Container Pod appsserver and dbserver started as a job.
 
 appserver: Application Server, CentOs with sqlcmd installed.
@@ -105,6 +100,7 @@ kubectl create -f jobtest003.yaml
 
 
 ## How to delete the cluster
+
 In case you set up everything in its own resource group, just delete the resource group.
  
 ## Extra material
