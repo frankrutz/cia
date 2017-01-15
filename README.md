@@ -4,6 +4,8 @@
 
 18.Jan 2017 @ Microsoft Schweiz, Wallisellen
 
+https://www.meetup.com/Azure-Cloud-User-Group-Switzerland/events/235434796/
+
 ## Azure Container Service / Kubernetes / Jobs
 
 Using Ubuntu Bash in Windows 10, we create a Kubernetes Cluster with Azure Container Service. Our pods have two containers each, an appserver and a dbserver. 
