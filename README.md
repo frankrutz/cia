@@ -70,16 +70,23 @@ See
 
 https://hub.docker.com/r/microsoft/mssql-server-linux/
 
+To start a pod with just the database:
+
 kubectl create -f mssql.yaml
 
 ## Azure Container Registry 
+
+Very similar to the docker registry experience.
+
 To connect to the Azure Container Registry from Kubernetes,
+
 create a kubernetes secret.
 
 See createAZCRsecret.ksh
 
 
 ## Example One-Container pod appserver
+
 kubectl create -f uno.yaml
 
 ## Example Two-Container Pod appsserver and dbserver
@@ -87,18 +94,6 @@ kubectl create -f uno.yaml
 appserver: Application Server, CentOs with sqlcmd installed.
 
 dbserver: The MSSQL Server running native on Ubuntu.
-
-There are three levels of this pod: duo duo2 duo3
-
-duo starts the appserver with an explicit program
-
-duo2 starts the testdriver.ksh without a kubernetes secret
-
-duo3 uses a kubernetes secret
-
-kubectl create -f duo.yaml
-
-kubectl create -f duo2.yaml
 
 kubectl create -f secretpassword.yaml
 
