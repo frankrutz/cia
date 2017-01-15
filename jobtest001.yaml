@@ -1,0 +1,28 @@
+  apiVersion: batch/v1
+kind: Job
+metadata:
+  name: test001
+spec:
+  template:
+    metadata:
+      name: test001
+    spec:
+      containers:
+      - name: dbserver
+        image: microsoft/mssql-server-linux
+        env:
+          - name: ACCEPT_EULA
+            value: "Y"
+          - name: SA_PASSWORD
+            value: "ABpKJ.mjm1968pups"
+        ports:
+          - containerPort: 1433
+        imagePullPolicy: IfNotPresent
+      - name: appserver
+        image: regwalli001-on.azurecr.io/appservtest
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/sh","-c"]
+        args: ["echo started; for COUNT in {1..25} ; do sqlcmd -S localhost -U SA -P ABpKJ.mjm1968pups -Q \"select getDate()\"; echo \"test001:$COUNT\"; sleep 1; done; echo finished;"]
+      restartPolicy: Never
+      imagePullSecrets:
+        - name: myregistrykey
