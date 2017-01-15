@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: duo3
+spec:
+  containers:
+
+   - name: appserver
+     image: regwalli001-on.azurecr.io/appservtest
+     imagePullPolicy: IfNotPresent
+     env:
+      - name: MY_DB_SERVER
+        value: localhost
+      - name: MY_DB_PASSWD
+        valueFrom:
+          secretKeyRef:
+            name: mysecret
+            key: password
+      - name: MY_TEST_TARGET
+        value: "test_001"
+
+   - name: dbserver
+     image:  microsoft/mssql-server-linux
+     imagePullPolicy: IfNotPresent
+     env:
+      - name: ACCEPT_EULA
+        value: "Y"
+      - name: SA_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: mysecret
+            key: password
+      - name: MY_TEST_TARGET
+     ports:
+      - containerPort: 1433
+
+
+  imagePullSecrets:
+    - name: myregistrykey
