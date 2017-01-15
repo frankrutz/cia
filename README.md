@@ -53,13 +53,13 @@ This makes it easy to delete in the end.
 
 az login
 
-az group create -l westeurope -n resgrppotf
+az group create -l westeurope -n resgrpexampel
 
-az acs create --orchestrator-type=kubernetes --resource-group=resgrppotf --dns-prefix=dnspotf --name=potfk8s
+az acs create --orchestrator-type=kubernetes --resource-group=resgrpexampel --dns-prefix=dnsexample --name=k8sexample
 
 creating the cluster will typically take about five minutes.
 
-az acs kubernetes get-credentials  --resource-group=resgrppotf --dns-prefix=dnspotf --name=potfk8s
+az acs kubernetes get-credentials  --resource-group=resgrpexampel --dns-prefix=dnsexample --name=k8sexample
 
 kubectl cluster-info
 
