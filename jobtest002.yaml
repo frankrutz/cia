@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: test002
+spec:
+  template:
+    metadata:
+      name: test002
+    spec:
+      containers:
+      - name: dbserver
+        image: microsoft/mssql-server-linux
+        env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: SA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysecret
+              key: password
+        ports:
+          - containerPort: 1433
+        imagePullPolicy: IfNotPresent
+      - name: appserver
+        env:
+         - name: MY_DB_SERVER
+           value: localhost
+         - name: MY_DB_PASSWD
+           valueFrom:
+             secretKeyRef:
+               name: mysecret
+               key: password
+         - name: MY_TEST_TARGET
+           value: "test_002"
+        image: regwalli001-on.azurecr.io/appservtest
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Never
+      imagePullSecrets:
+        - name: myregistrykey
