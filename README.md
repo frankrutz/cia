@@ -65,6 +65,11 @@ kubectl cluster-info
 
 
 ## Microsoft SQL DB in a Linux Container 
+
+See 
+
+https://hub.docker.com/r/microsoft/mssql-server-linux/
+
 kubectl create -f mssql.yaml
 
 ## Azure Container Registry 
