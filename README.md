@@ -89,7 +89,7 @@ See createAZCRsecret.ksh
 
 kubectl create -f uno.yaml
 
-## Example Two-Container Pod appsserver and dbserver
+## Example Two-Container Pod appsserver and dbserver started as a job.
 
 appserver: Application Server, CentOs with sqlcmd installed.
 
@@ -97,7 +97,11 @@ dbserver: The MSSQL Server running native on Ubuntu.
 
 kubectl create -f secretpassword.yaml
 
-kubectl create -f duo3.yaml
+kubectl create -f jobtest001.yaml
+
+kubectl create -f jobtest002.yaml
+
+kubectl create -f jobtest003.yaml
 
 
 ## How to delete the cluster
