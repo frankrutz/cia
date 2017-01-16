@@ -50,18 +50,22 @@ If you want to clone this repository to your local computer, use
 git clone https://github.com/potf0815/cia
 
 ## Azure Container Service: How to create a Kubernetes cluster 
+
 You may want to install the cluster in its own resource group.
+
 This makes it easy to delete in the end.
+
+Exchange the names below 
 
 az login
 
-az group create -l westeurope -n resgrpexampel
+az group create -l westeurope -n resgrpexample
 
-az acs create --orchestrator-type=kubernetes --resource-group=resgrpexampel --dns-prefix=dnsexample --name=k8sexample
+az acs create --orchestrator-type=kubernetes --resource-group=resgrpexample --dns-prefix=dnsexample --name=k8sexample
 
 creating the cluster will typically take about five minutes.
 
-az acs kubernetes get-credentials  --resource-group=resgrpexampel --dns-prefix=dnsexample --name=k8sexample
+az acs kubernetes get-credentials  --resource-group=resgrpexample --dns-prefix=dnsexample --name=k8sexample
 
 kubectl cluster-info
 
