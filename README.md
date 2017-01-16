@@ -1,6 +1,5 @@
 # Azure Cloud User Group Switzerland
 # Containers In Azure
-# Complete Infrastructure Automation
 
 18.Jan 2017 @ Microsoft Schweiz, Wallisellen
 
