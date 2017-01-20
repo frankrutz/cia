@@ -112,38 +112,11 @@ In case you set up everything in its own resource group, just delete the resourc
  
 ## Creating the AppServer Container
 
-We create a Centos Container which can run sqlcmd.
+We create a Centos Container which can run sqlcmd and bcp
 
 https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools
 
-Using the included dockerfile, we build an intermediate container
-
-docker build -t tempcontainer .
-
-And run it interactively with 
-
-docker run -it tempcontainer bash
-
-Once we are inside the container, we can install sqlcmd: 
- 
-yum -y update
-
-yum install mssql-tools unixODBC-utf16-devel
-
-ln -sfn /opt/mssql-tools/bin/sqlcmd-13.0.1.0 /usr/bin/sqlcmd
-
-ln -sfn /opt/mssql-tools/bin/bcp-13.0.1.0 /usr/bin/bcp
-
-Answer YES to the license terms if you want to.
-
-Exit the container.
-
-Using the CONTAINER ID of the stopped container, create a new container named appservtest
-
-The CONTAINER ID will be different in your case.
-
-docker commit 3e8736b7a769 appservtest
-
+docker build -t appservtest .
 
 ## Pushing the appservtest image to Azure Container Registry
 
