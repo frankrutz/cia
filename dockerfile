@@ -13,6 +13,6 @@ RUN ln -sfn /opt/mssql-tools/bin/bcp-13.0.1.0 /usr/bin/bcp
 #################################################################
 #get the testdriver and make it the standard-cmd of the container
 COPY testdriver.ksh  /usr/local/bin/
-CMD  chmod a+x /usr/local/bin/testdriver.ksh
+RUN  chmod a+x /usr/local/bin/testdriver.ksh
 
 CMD  /usr/local/bin/testdriver.ksh
