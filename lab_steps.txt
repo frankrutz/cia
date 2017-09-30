@@ -1,0 +1,23 @@
+#steps to create, operate, and delete a kubernetes cluster with cloud shell.
+#do this step by step
+
+git clone https://github.com/potf0815/cia
+cd cia
+
+az group create -l westeurope -n resgrpexample
+az acs create --orchestrator-type=kubernetes --resource-group=resgrpexample --dns-prefix=dnsexample --name=k8sexample --generate-ssh-keys
+
+kubectl cluster-info
+kubectl create -f mssql.yaml
+kubectl get pods
+
+chmod u+x createAZCRsecret.ksh
+./createAZCRsecret.ksh
+kubectl create -f secretpassword.yaml
+kubectl get secrets
+
+kubectl create -f jobtest001.yaml
+kubectl create -f jobtest002.yaml
+kubectl create -f jobtest003.yaml
+
+az group delete -n resgrpexample
