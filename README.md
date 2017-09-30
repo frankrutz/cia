@@ -2,6 +2,7 @@
 # Containers In Azure
 
 18.Jan 2017 @ Microsoft Schweiz, Wallisellen
+Updated 30.Sep 2017 for usage with Azure Cloud Shell
 
 https://www.meetup.com/Azure-Cloud-User-Group-Switzerland/events/235434796/
 
@@ -10,7 +11,7 @@ https://www.meetup.com/Azure-Cloud-User-Group-Switzerland/events/235434796/
 Using Ubuntu Bash in Windows 10, we create a Kubernetes Cluster with Azure Container Service. Our pods have two containers each, an appserver and a dbserver. 
 
 Highlights will be:  
-- Bash on Windows
+- Bash via Azure Cloud Shell
 - Azure Container Service: How to create a Kubernetes cluster 
 - Microsoft SQL DB in a Linux Container : superfast creation 
 - Azure Container Registry 
@@ -20,31 +21,9 @@ Highlights will be:
 - How to delete the cluster
 
 
-## Bash on Windows 10
+To prepare for running kubernetes from Azure Cloud Shell (cs), just go the the Azure portal and launch cloud shell.
 
-To prepare for running kubernetes from a Windows 10 bash, we install 
-- Bash
-- Azure CLI
-- Kubectl
-- Git
-
-Install instructions for bash on Windows 10:
-http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/
-
-Install Azure CLI on Ubuntu:
-https://github.com/Azure/azure-cli
-
-Install kubectl on Ubuntu:
-http://kubernetes.io/docs/user-guide/prereqs/
-
-Installing git:
-apt-get install git
-
-Finally, we generate ssh keys. No passphrase.
-
-ssh-keygen -t rsa
-
-If you want to clone this repository to your local computer, use
+If you want to clone this repository, in cs:
 
 git clone https://github.com/potf0815/cia
 
@@ -56,15 +35,17 @@ This makes it easy to delete in the end.
 
 Exchange the names below 
 
-az login
+
 
 az group create -l westeurope -n resgrpexample
 
-az acs create --orchestrator-type=kubernetes --resource-group=resgrpexample --dns-prefix=dnsexample --name=k8sexample
+If you have ssh-keys, leave generate-ssh-keys out
+
+az acs create --orchestrator-type=kubernetes --resource-group=resgrpexample --dns-prefix=dnsexample --name=k8sexample --generate-ssh-keys
 
 creating the cluster will typically take about five minutes.
 
-az acs kubernetes get-credentials  --resource-group=resgrpexample --dns-prefix=dnsexample --name=k8sexample
+az acs kubernetes get-credentials  --resource-group=resgrpexample --name=k8sexample
 
 kubectl cluster-info
 
@@ -130,3 +111,29 @@ docker push regwalli001-on.azurecr.io/appservtest
  
  
  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+## Old version :: running from windows bash :: manual generation of ssh-keys
+
+If you don't want to use cloud shell, you may want to setup your bash-environment as follows:
+Install instructions for bash on Windows 10:
+http://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/
+
+Install Azure CLI on Ubuntu:
+https://github.com/Azure/azure-cli
+
+Install kubectl on Ubuntu:
+http://kubernetes.io/docs/user-guide/prereqs/
+
+Installing git:
+apt-get install git
+ 
+To generate ssh-keys, no passphrase:
+ssh-keygen -t rsa
