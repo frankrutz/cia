@@ -30,11 +30,13 @@ git clone https://github.com/potf0815/cia
 
 ## Azure Container Service: How to create a Kubernetes cluster 
 
+The commands can be found in the file lab_steps.txt
+
 You may want to install the cluster in its own resource group.
 
 This makes it easy to delete in the end.
 
-Exchange the names below 
+Exchange the names below
 
 
 
