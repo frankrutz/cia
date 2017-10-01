@@ -120,7 +120,9 @@ docker push regwalli001-on.azurecr.io/appservtest
  
  
  
- 
+## Remarks
+You may also want to read the Microsoft documentation "Deploy Kubernetes cluster for Linux containers":
+https://docs.microsoft.com/en-us/azure/container-service/kubernetes/container-service-kubernetes-walkthrough
  
  
 ## Old version :: running from windows bash :: manual generation of ssh-keys
